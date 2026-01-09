@@ -262,65 +262,59 @@
     }
 
     /* CHARTS & SCREENSHOTS */
-    .charts-row, .screenshot-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 2rem;
-      margin-top: 2.5rem;
-      align-items: start;
-    }
+   .charts-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  align-items: stretch;
+}
 
-    .charts-row img, .screenshot-grid img {
-      width: 100%;
-      height: auto;
-      max-height: 360px;
-      display: block;
-      border-radius: 20px;
-      background: #f8faff;
-      border: 2px solid var(--border-light);
-      box-shadow: 0 12px 30px rgba(15,118,110,0.15);
-      transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-      cursor: pointer;
-      object-fit: contain;
-      margin: 0 auto;
-    }
+/* Chart images have a set height and uniform size/layout */
+.charts-row img {
+  width: 100%;
+  aspect-ratio: 1.2 / 1;       /* Use 1:1 or 4:3 for square/rectangle */
+  height: 295px;               /* pick your ideal height, match across both images */
+  min-height: 220px;
+  max-height: 320px;
+  object-fit: contain;         /* Ensures no cropping, fits inside the box */
+  border-radius: 20px;
+  background: #f8faff;
+  border: 2px solid var(--border-light);
+  box-shadow: 0 12px 30px rgba(15,118,110,0.15);
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  cursor: pointer;
+  margin: 0 auto;
+}
 
-    .charts-row img:hover, .screenshot-grid img:hover {
-      transform: translateY(-12px) scale(1.02);
-      box-shadow: 0 30px 60px rgba(15,118,110,0.25);
-      border-color: var(--primary-soft);
-    }
-
-    /* RESPONSIVE */
-
-    @media (max-width: 768px) {
-      main {
-        padding: 2.5rem 1.5rem 4rem;
-      }
-
-      .section-card {
-        padding: 2rem 1.2rem;
-        margin-top: 2.1rem;
-      }
-
-      .hero {
-        min-height: 320px !important;
-      }
-
-      .hero-content {
-        padding: 2.2rem 0.6rem 2rem;
-      }
-
-      .links {
-        flex-direction: column;
-        gap: 0.5rem;
-      }
-
-      .links a {
-        text-align: center;
-        padding: 1rem 1.5rem;
-      }
-
+/* Responsive fix: single column and same height */
+@media (max-width: 768px) {
+  .charts-row {
+    grid-template-columns: 1fr !important;
+    gap: 1.3rem !important;
+  }
+  .charts-row img {
+    width: 100%;
+    height: 250px;          /* adapt for mobile! */
+    min-height: 180px;
+    max-height: 260px;
+    aspect-ratio: 1.2 / 1;
+  }
+}
+.charts-row img {
+  width: 100%;
+  aspect-ratio: 1.2 / 1;
+  height: 295px;
+  min-height: 220px;
+  max-height: 320px;
+  object-fit: contain;
+  border-radius: 20px;
+  background: #f8faff;
+  border: 2px solid var(--border-light);
+  box-shadow: 0 12px 30px rgba(15,118,110,0.15);
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  cursor: pointer;
+  margin: 0 auto;
+}
       /* Mobile grids - single column stacking */
       .charts-row,
       .screenshot-grid {
@@ -328,13 +322,7 @@
         grid-template-columns: 1fr !important;
         gap: 1.3rem !important;
       }
-      .charts-row img, .screenshot-grid img {
-        max-width: 100%;
-        margin: 0 auto;
-        height: auto;
-        max-height: 300px;
-        border-radius: 16px;
-      }
+     
       .metrics-list li {
         font-size: 1.07rem;
       }
@@ -743,3 +731,4 @@
   </script>
 </body>
 </html>
+
