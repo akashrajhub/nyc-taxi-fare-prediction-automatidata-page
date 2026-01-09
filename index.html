@@ -262,21 +262,34 @@
     }
 
     /* CHARTS & SCREENSHOTS */
-    .chart-img {
+    .chart-box {
   width: 100%;
-  aspect-ratio: 4 / 3;
-  height: auto;
-  object-fit: cover;
-
-  border-radius: 20px;
+  aspect-ratio: 4 / 3;   /* controls height */
   background: #f8faff;
+  border-radius: 20px;
+  overflow: hidden;
   border: 2px solid var(--border-light);
   box-shadow: 0 12px 30px rgba(15,118,110,0.15);
 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+    .chart-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   display: block;
+
   transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
               box-shadow 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  }
+}
+
+.chart-box:hover .chart-img {
+  transform: scale(1.03);
+}
+
 
   .chart-img:hover {
    transform: translateY(-12px) scale(1.02);
@@ -635,9 +648,14 @@
         <li><strong>RMSE</strong>: 1.71</li>
       </ul>
       <div class="charts-row">
+       <div class="chart-box">
       <img class="chart-img" src="Model/Actual_vs_Predicted.png" alt="Actual vs Predicted">
+      </div>
+      <div class="chart-box">
       <img class="chart-img" src="Model/model_performance_comparison.png" alt="Model Performance Comparison">
       </div>
+      </div>
+
 
     </section>
 
@@ -788,6 +806,7 @@
   </script>
 </body>
 </html>
+
 
 
 
